@@ -1,0 +1,25 @@
+service: impulses
+
+plugins:
+    - serverless-offline
+    - serverless-webpack
+
+provider:
+    name: aws
+    runtime: nodejs6.10
+
+functions:
+    search:
+        handler: server/functions/search/index.handler
+        events:
+            - http:
+                  method: get
+                  path: search
+                  integration: lambda
+    create:
+        handler: server/functions/create/index.handler
+        events:
+            - http:
+                  method: post
+                  path: create
+                  integration: lambda
