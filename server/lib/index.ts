@@ -1,9 +1,9 @@
 import { Handler, APIGatewayEvent, Context, Callback } from 'aws-lambda';
 
-export const handle: (fn: (event: APIGatewayEvent) => any) => Handler = fn => {
-	return async (
+export const handle = (fn: (event: APIGatewayEvent) => any) => {
+	const handler: Handler = async (
 		event: APIGatewayEvent,
-		context: Context,
+		_: any,
 		callback: Callback
 	) => {
 		try {
@@ -13,4 +13,6 @@ export const handle: (fn: (event: APIGatewayEvent) => any) => Handler = fn => {
 			callback(err);
 		}
 	};
+
+	return handler;
 };

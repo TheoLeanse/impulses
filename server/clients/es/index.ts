@@ -1,17 +1,17 @@
+require('dotenv').config();
 import * as request from 'request-promise';
 
-const baseUrl = process.env.PRODUCTION ? '' : 'http://localhost:9200';
-const index = 'impulses';
+const indexUrl = `${process.env.ES_CLUSTER_URL}/impulses`;
 
 export const search = (query?: any) =>
 	query
-		? request.post(`${baseUrl}/${index}/_search`, {
+		? request.post(`${indexUrl}/_search`, {
 				body: query
 		  })
-		: request.get(`${baseUrl}/${index}/_search`);
+		: request.get(`${indexUrl}/_search`);
 
 export const create = (content: string) =>
-	request.put(`${baseUrl}/${index}/_doc`, {
+	request.put(`${indexUrl}/_doc`, {
 		body: { content },
 		json: true
 	});

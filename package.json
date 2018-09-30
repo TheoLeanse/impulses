@@ -41,6 +41,7 @@
 		"webpack": "^4.20.2"
 	},
 	"dependencies": {
+		"dotenv": "^6.0.0",
 		"request": "^2.88.0",
 		"request-promise": "^4.2.2"
 	}
